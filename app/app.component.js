@@ -14,6 +14,7 @@
     app.AppComponent = ng.core
         .Component({
             selector: 'my-app',
+            directives: [app.HeroDetailComponent],
             template: `
     <h1>{{title}}</h1>
     <h2>My Heroes</h2>
@@ -24,14 +25,7 @@
         <span class="badge">{{hero.id}}</span> {{hero.name}}
       </li>
     </ul>
-    <div *ngIf="selectedHero">
-      <h2>{{selectedHero.name}} details!</h2>
-      <div><label>id: </label>{{selectedHero.id}}</div>
-      <div>
-        <label>name: </label>
-        <input [(ngModel)]="selectedHero.name" placeholder="name"/>
-      </div>
-    </div>
+    <my-hero-detail [hero]="selectedHero"></my-hero-detail>
   `,
             styles: [`
     .selected {
